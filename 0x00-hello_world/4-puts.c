@@ -1,12 +1,14 @@
 #include<stdio.h>
+
 /**
- * main-Entry point
+ * main - Entry point
  * 
- * Description
+ * Description: Programming is like building a multilingual puzzle
  *
- * Return always:0 (done)
+ * Return always 0 (success)
  */        
-        int main(void) {	
+        int main(void) 
+{	
 	puts("\"Programming is like building a multilingual puzzle");
 	return(0);
-	}
+}
