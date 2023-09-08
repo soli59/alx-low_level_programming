@@ -4,7 +4,7 @@
 /**
  * main - Entry point
  *
- * Description: determine if the num positive or negative
+ * Description: false or true validation
  *
  * Return : 0 (success)
 */
