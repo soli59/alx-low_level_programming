@@ -5,9 +5,8 @@
  *
  * Description: print all alphabet letters
  *
- * Return: 0 (success)
+ * Return: 0 always (success)
 */
-
 int main(void)
 {
 	char ch = 'a';
