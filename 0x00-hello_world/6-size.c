@@ -3,11 +3,9 @@
 /**
  * main - Entry point
  *
- * Description: This program using sizeof to prints the size of various data types.
- *
+ * Description: using sizeof to print the size of various types.
  * Return: Always 0 (Success)
 */
-
 int main(void)
 {
 	printf("Size of a char: %lu byte(s)\n", sizeof(char));
