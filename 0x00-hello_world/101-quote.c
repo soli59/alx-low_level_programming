@@ -1,18 +1,17 @@
 #include <unistd.h>
-#include <stdlib.h>
 
+/**
+ * main - Entry point
+ *
+ * Description: Print a quote using the write function.
+ *
+ * Return: 1 (not success)
+ */
 int main(void)
 {
-    char *message = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	char quo[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
 
-    /* Using the write system call to print to standard error (file descriptor 2) */
-    ssize_t written = write(2, message, 59);
-
-    /* Check if write was successful */
-    if (written != 59) {
-        return 1;
-    }
-
-    return 0;
+	write(2, quo, 59);
+	return (1);
 }
 
