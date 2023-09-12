@@ -3,17 +3,17 @@
 /**
  *main - Entry point of the program
  *
- *Description: prints _putcher using putcher prototype
+ *Description: prints _putchar using putchar prototype
  *
  *Return: Always 0 (Success)
 */
 int main(void)
 {
-	char str[] = "_putcher ";
+	char str[] = "_putchar ";
 	int ch;
 
 	for (ch = 0; ch < 8; ch++)
-		_putcher(str[ch]);
-	_putcher('\n');
+		_putchar(str[ch]);
+	_putchar('\n');
 	return (0);
 }
