@@ -3,7 +3,8 @@
 /**
  * print_alphabet use  _putchar function to print the alphaber a - z
  *
- * Description: This function prints the lowercase English alphabet from 'a' to 'z'
+ * Description:
+ * This function prints the lowercase English alphabet from 'a' to 'z'
  * using the _putchar function
  *
 */
