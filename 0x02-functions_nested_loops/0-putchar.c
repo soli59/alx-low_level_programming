@@ -1,12 +1,19 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * main - Entry point of the program
+ *main - Entry point of the program
  *
- * Return: Always 0 (Success)
+ *Description: prints _putcher using putcher prototype
+ *
+ *Return: Always 0 (Success)
 */
 int main(void)
 {
-	printf("_putchar\n");
+	char str[] = "_putcher ";
+	int ch;
+
+	for (ch = 0; ch < 8; ch++)
+		_putcher (str[ch]);
+	_putcher ('\n');
 	return (0);
 }
