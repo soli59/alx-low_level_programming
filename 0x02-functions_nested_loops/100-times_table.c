@@ -4,8 +4,9 @@
 /**
  * print_times_table - Prints the n times table, starting with 0.
  * @n: The limit for the times table (0 to 15)
- */
+*/
 void print_times_table(int n)
+
 {
 	if (n < 0 || n > 15)
 		return;
