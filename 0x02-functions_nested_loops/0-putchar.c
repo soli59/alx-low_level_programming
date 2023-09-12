@@ -13,7 +13,7 @@ int main(void)
 	int ch;
 
 	for (ch = 0; ch < 8; ch++)
-		_putcher (str[ch]);
-	_putcher ('\n');
+		_putcher(str[ch]);
+	_putcher('\n');
 	return (0);
 }
