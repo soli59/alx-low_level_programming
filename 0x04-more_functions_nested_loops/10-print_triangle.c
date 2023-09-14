@@ -3,7 +3,7 @@
 /**
  * print_triangle - Prints a triangle of '#' characters in the terminal.
  * @size: The size of the triangle.
- */
+*/
 void print_triangle(int size)
 {
 	if (size <= 0)
