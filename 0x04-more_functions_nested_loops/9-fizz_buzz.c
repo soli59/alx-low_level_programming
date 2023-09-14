@@ -1,5 +1,13 @@
 #include <stdio.h>
-
+/**
+ * main - Entry point for the Fizz-Buzz program.
+ *
+ * Description:
+ *This program prints numbers from 1 to 100, replacing multi of 3 with "Fizz,"
+ *multi of 5 with "Buzz," and multi of both with "FizzBuzz."
+ *
+ * Return: Always 0 (Success)
+*/
 int main(void)
 {
 	for (int i = 1; i <= 100; i++)
@@ -24,5 +32,5 @@ int main(void)
 
 	printf("\n");
 
-	return 0;
+	return (0);
 }
