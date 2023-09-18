@@ -10,17 +10,19 @@
  */
 void print_rev(char *s)
 {
-	while (*s != '\0')
+	char *end = s;
+
+	while (*end != '\0')
 	{
-		s++;
+		end++;
 	}
 
-	s--; /* Move back one position to the last character */
+	end--; /* Move back one position to the last character */
 
-	while (s >= 0)
+	while (end >= s)
 	{
-		write(1, s, 1); /* Write one character at a time to stdout in reverse */
-		s--;
+		write(1, end, 1); /* Write one character at a time to stdout in reverse */
+		end--;
 	}
 
 	write(1, "\n", 1); /* Write a newline character to stdout */
