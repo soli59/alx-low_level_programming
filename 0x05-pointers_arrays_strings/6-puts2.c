@@ -4,7 +4,7 @@
  * puts2 - Prints every other charr of a string, starting with the first charr.
  * @str: The input string.
  *
- * Description: This function prints every other character of the string @str,
+ * Description: This function prints every other charr of the string @str,
  * starting with the first character, followed by a new line.
  */
 void puts2(char *str)
