@@ -32,11 +32,6 @@ char *_strncat(char *dest, char *src, int n)
 
 	return (dest);
 }
-/**
- * main - Entry point of the program
- *
- * Return: Always 0 (Success)
-*/
 int main(void)
 {
 	char str1[50] = "Hello, ";
