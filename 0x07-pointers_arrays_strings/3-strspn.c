@@ -30,7 +30,7 @@ unsigned int _strspn(char *s, char *accept)
 			}
 		}
 		if (!match)
-				return (count);
+			return (count);
 		count++;
 	}
 
