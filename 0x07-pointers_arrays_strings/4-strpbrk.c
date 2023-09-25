@@ -2,31 +2,27 @@
 
 /**
  * _strpbrk - Searches a string for any of a set of bytes.
- * @s: The string to be searched.
+ * @s: The string to search.
  * @accept: The string containing characters to search for.
  *
  * Description: This function searches the string @s for the first occurrence
- *              of any character in the string @accept.
+ * of any character in the string @accept.
  *
- * Return: A pointer to the first occurrence in @s that matches any character
- *         in @accept, or NULL if no such character is found.
+ * Return: pointer to the byte in @s that matches one of the bytes in @accept,
+ * or NULL if no such byte is found.
  */
 char *_strpbrk(char *s, char *accept)
 {
-	char *result = NULL;
 	int i, j;
 
-	for (i = 0; s[i]; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (j = 0; accept[j]; j++)
+		for (j = 0; accept[j] != '\0'; j++)
 		{
 			if (s[i] == accept[j])
-			{
-				result = &s[i];
-				return (result);
-			}
+				return (s + i);
 		}
 	}
 
-	return (result);
+	return (NULL);
 }
