@@ -1,4 +1,4 @@
-#include "dog.h" /* Include the header file with the struct definition */
+#include "dog.h"
 
 /**
  * init_dog - Initialize a struct dog
