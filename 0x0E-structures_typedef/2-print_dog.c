@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include "dog.h" /* Include the header file with the struct definition */
+#include "dog.h"
 
 /**
  * print_dog - Print the elements of a struct dog
  * @d: Pointer to the struct dog to be printed
  *
- * Description: This function prints the elements of a struct dog in a specific format.
+ * Description: function prints elements of struct dog in specific format.
  */
 void print_dog(struct dog *d)
 {
