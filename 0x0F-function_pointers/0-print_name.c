@@ -1,4 +1,4 @@
-#include "your_header.h" /* Include your header file with function prototypes */
+#include "your_header.h"
 
 /**
  * print_name - Print a name using a given function
