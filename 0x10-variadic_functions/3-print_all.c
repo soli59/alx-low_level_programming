@@ -6,8 +6,8 @@
  * @format: A string with format specifiers
  *
  * Description:  function prints arguments based on the provided format string.
- * Supported format specifiers: 'c' (char), 'i' (integer),
- * 'f' (float), 's' (string)
+ * Supported format specifiers: 'c' (char), 'i' (integer),.
+ * 'f' (float), 's' (string).
  * If a string is NULL, it prints "(nil)" instead.
  */
 void print_all(const char * const format, ...)
