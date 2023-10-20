@@ -1,14 +1,14 @@
-#include "your_header.h"
-
 /**
- * print_name - Print a name using a given function
- * @name: The name to be printed
- * @f: A function pointer that takes a char pointer as an argument
- *
- * Description: This function use provided function to print the name.
+ * print_name - prints a name
+ * @name: the name to print
+ * @fptr: a function pointer
  */
-void print_name(char *name, void (*f)(char *))
+void print_name(char *name, void (*fptr)(char *))
 {
-	if (name && f)
-	f(name);
+	if (!name || *name == '\0' || !fptr)
+		/* either the name or the function pointer is NULL */
+		return;
+
+	/* call the function pointer for further processing */
+	fptr(name);
 }
