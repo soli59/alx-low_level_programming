@@ -1,35 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define isdigit(c) (c >= '0' && c <= '9')
 
 /**
- * main - Entry point
- * @argc: The number of command-line arguments
- * @argv: An array of pointers to the command-line arguments
+ * main - Prints the sum of positive integers
+ * @argc: CLI args counter
+ * @argv: Operands... can receive more than operand
  *
- * Return: 0 on success, 1 on error
+ * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int i, num;
-	int sum = 0;
+	int i, j, sum = 0;
 
-	if (argc == 1)
+	if (!(argc > 1)) /* no other arguments received, there's nothing to do */
+		printf("%d\n", sum);
+	else
 	{
-		printf("0\n");
-		return (0);
-	}
-
-	for (i = 1; i < argc; i++)
-	{
-		num = atoi(argv[i]);
-		if (num <= 0)
+		for (i = 1; i < argc; i++)
 		{
-			printf("Error\n");
-			return (1);
+			for (j = 0; argv[i][j] != '\0'; j++)
+			{
+				if (!isdigit(argv[i][j])) /* handle non-digits */
+				{
+					puts("Error");
+					return (1);
+				}
+			}
+			sum += atoi(argv[i]); /* update sum */
 		}
-		sum += num;
+		printf("%d\n", sum);
 	}
 
-	printf("%d\n", sum);
 	return (0);
 }
