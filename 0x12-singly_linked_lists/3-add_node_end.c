@@ -16,9 +16,7 @@ list_t *add_node_end(list_t **head, const char *str)
 
 	new_node = malloc(sizeof(list_t));
 	if (new_node == NULL)
-	{
 		return (NULL);
-	}
 
 	dup_str = strdup(str);
 	if (dup_str == NULL)
@@ -33,17 +31,16 @@ list_t *add_node_end(list_t **head, const char *str)
 
 	/* check if the list is empty - guarantees an O(1) */
 	if (*head == NULL)
-	{
 		*head = new_node;
-		return (*head);
-	}
-
-	/* list is not empty, traverse to the tail. O(n) */
-	while (tail->next != NULL)
+	else
 	{
-		tail = tail->next;
+		/* list is not empty, traverse to the tail. O(n) */
+		while (tail->next != NULL)
+		{
+			tail = tail->next;
+		}
+		tail->next = new_node; /* adjust tail links */
 	}
-	tail->next = new_node; /* adjust tail links */
 
 	return (*head);
 }

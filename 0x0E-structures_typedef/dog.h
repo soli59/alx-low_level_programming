@@ -1,25 +1,25 @@
-#ifndef DOG_STRUCT_H
-#define DOG_STRUCT_H
+#ifndef DOG_H
+#define DOG_H
 
 /**
- * struct dog - Structure representing a dog
- * @name: Name of the dog (string)
- * @age: Age of the dog (float)
- * @owner: Owner of the dog (string)
- *
- * Description: This structure defines a dog with its name, age, and owner.
+ * struct dog - blueprint for dog entity
+ * @name: name of dog
+ * @owner: name of dog's owner
+ * @age: dog's age
  */
 struct dog
 {
 	char *name;
-	float age;
 	char *owner;
+	float age;
 };
-
-typedef struct dog dog_t;
 
 void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
+
+/* set new type definition */
+typedef struct dog dog_t;
+
 dog_t *new_dog(char *name, float age, char *owner);
 void free_dog(dog_t *d);
 

@@ -1,20 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- * @argc: The number of command-line arguments
- * @argv: An array of pointers to the command-line arguments
+ * main - Prints CLI arguments, including the program name
+ * @argc: CLI args counter
+ * @argv: CLI args. Can be zero of a variable length
  *
- * Return: Always 0
+ * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	int i;
 
 	for (i = 0; i < argc; i++)
-	{
-		printf("%s\n", argv[i]);
-	}
+		puts(argv[i]);
 
 	return (0);
 }

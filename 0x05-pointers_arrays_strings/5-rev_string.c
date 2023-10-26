@@ -1,35 +1,35 @@
-#include "main.h"
+/**
+ * get_len - helper function to get the length of a string
+ * @s: string
+ *
+ * Return: length of string
+ */
+int get_len(char *s)
+{
+	int i = 0;
+
+	for (; *s; s++, i++)
+		;
+	return (i);
+}
 
 /**
- * rev_string - Reverses a string.
- * @s: The string to be reversed.
- *
- * Description: This function reverses the charss in the string @s in place.
+ * rev_string - reverses a string, in place
+ * @s: string
  */
 void rev_string(char *s)
 {
-	char temp;
-	int length = 0;
-	int start = 0;
+	int i, len, mid;
+	char c; /* temporal variable */
 
-	if (s)
+	len = get_len(s) - 1;
+	mid = len / 2;
+
+	for (i = 0; i <= mid; i++)
 	{
-		while (s[length] != '\0')
-		{
-			length++;
-		}
-
-		length--;
-
-		while (start < length)
-		{
-			temp = s[start];
-			s[start] = s[length];
-			s[length] = temp;
-
-			start++;
-			length--;
-		}
+		c = s[i];
+		/* swap values */
+		s[i] = s[len - i];
+		s[len - i] = c;
 	}
 }
-

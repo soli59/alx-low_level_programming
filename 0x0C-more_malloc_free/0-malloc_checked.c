@@ -1,22 +1,21 @@
-#include <stdlib.h>
+#include "main.h"
 
 /**
- * malloc_checked - Allocate memory using malloc
- * @b: The number of bytes to allocate
+ * malloc_checked - allocates dynamic memory.
+ * @size: number of bytes to allocate
  *
- * Return: A pointer to the allocated memory
- *         If malloc fails, terminate with status 98
+ * Return: A pointer to the memory allocated.
  */
-void *malloc_checked(unsigned int b)
+void *malloc_checked(unsigned int size)
 {
-	void *ptr;
+	void *mem;
 
-	ptr = malloc(b);
-
-	if (ptr == NULL)
-	{
+	if (size == 0)
 		exit(98);
-	}
 
-	return (ptr);
+	mem = malloc(size);
+	if (!mem)
+		exit(98); /* memory allocation failed with status code 98 */
+
+	return (mem);
 }

@@ -1,79 +1,55 @@
-#include <stdarg.h>
-#include <stdio.h>
+#include "variadic_functions.h"
+#define is_fmt(c) (c == 'c' || c == 'i' || c == 's' || c == 'f')
 
 /**
- * print_all - Print arguments based on the format string
- * @format: A string with format specifiers
+ * print_all - prints any argument passed to it
+ * @format: the format in which arguments occur
  *
- * Description:
- * This function takes a format string and a variable number of arguments
- * and prints them based on the provided format string.
- * Supported format specifiers: 'c' (char), 'i' (integer), 'f' (float),
- * and 's' (string). If a string is NULL, it prints "(nil)" instead.
+ * Note: the accepted formats are `i` for integers,
+ * `c` for characters, `f` for floating-point
+ * numbers, and `s` for strings. All others not mentioned
+ * will be ignored.
  */
-typedef void (*print_function)(va_list);
-
-void print_char(va_list arg)
-{
-	printf("%c", va_arg(arg, int));
-}
-
-void print_int(va_list arg)
-{
-	printf("%d", va_arg(arg, int));
-}
-
-void print_float(va_list arg)
-{
-	printf("%f", (float)va_arg(arg, double));
-}
-
-void print_string(va_list arg)
-{
-	char *str = va_arg(arg, char *);
-	if (str == NULL)
-		printf("(nil)");
-	else
-		printf("%s", str);
-}
-
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	unsigned int i = 0;
-	print_function print_func;
-	char *separator = "";
+	char *str, *tmp_fmt;
 
 	va_start(args, format);
 
-	while (format && format[i])
-	{
-		switch (format[i])
-		{
-			case 'c':
-				print_func = &print_char;
-				break;
-			case 'i':
-				print_func = &print_int;
-				break;
-			case 'f':
-				print_func = &print_float;
-				break;
-			case 's':
-				print_func = &print_string;
-				break;
-			default:
-				i++;
-				continue;
-		}
+	/* get a writable version of the format */
+	tmp_fmt = (char *)format;
 
-		printf("%s", separator);
-		print_func(args);
-		separator = ", ";
-		i++;
+	while (tmp_fmt && *tmp_fmt != '\0')
+	{
+		switch (*tmp_fmt)
+		{
+		case 'c':
+			putchar(va_arg(args, int));
+			break;
+		case 'i':
+			printf("%d", va_arg(args, int));
+			break;
+		case 'f':
+			printf("%f", va_arg(args, double));
+			break;
+		case 's':
+			str = va_arg(args, char *);
+			if (!str)
+				str = "(nil)"; /* write (nil) if string is NULL */
+			printf("%s", str);
+			break;
+		default:
+			++tmp_fmt;
+			continue; /* invalid format mark - discard move on */
+		}
+		/* add separator */
+		if (is_fmt(*tmp_fmt) && *(tmp_fmt + 1) != '\0')
+			printf(", ");
+
+		++tmp_fmt; /* check the next format mark */
 	}
 
-	printf("\n");
-
+	putchar('\n');
 	va_end(args);
 }

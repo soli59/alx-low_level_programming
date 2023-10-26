@@ -1,40 +1,53 @@
 #include "main.h"
-#include <stdio.h>
+
+void add_format(int product);
+void print_product(int product);
 
 /**
- * times_table - Prints the 9 times table, starting with 0.
+ * times_table - Prints the 9 times table, starting with 0
  */
 void times_table(void)
-
 {
+	int i, j, product, next_product;
 
-int i, j, result;
+	for (i = 0; i < 10; i++)
+	{
+		for (j = 0; j < 10; j++)
+		{
+			product = i * j; /* get product */
+			print_product(product);
+			if (j == 9)
+				continue;
+			next_product = i * (j + 1); /* check next product */
+			add_format(next_product);
+		}
+		_putchar('\n');
+	}
+}
 
-		for (i = 0; i <= 9; i++)
-		{
-		for (j = 0; j <= 9; j++)
-		{
-		result = i * j;
-		if (j == 0)
-		{
-		_putchar('0');
-		}
-		else if (result < 10)
-		{
+/**
+ * add_format - helper function to neatly format the output of products
+ * @p: product
+ */
+void add_format(int product)
+{
+	_putchar(',');
+	_putchar(' ');
+	if (product < 10)
 		_putchar(' ');
-		_putchar(result + '0');
-		}
-		else
-		{
-		_putchar((result / 10) + '0');
-		_putchar((result % 10) + '0');
-		}
-		if (j < 9)
-		{
-		_putchar(',');
-		_putchar(' ');
-		}
+}
+
+/**
+ * print_product - helper function to print products
+ * @p: product
+ */
+void print_product(int product)
+{
+	if (product > 9)
+	{
+		_putchar((product / 10) + '0');
+		_putchar((product % 10) + '0');
 	}
-	_putchar('\n');
-	}
+	else
+		_putchar((product % 10) + '0');
 }

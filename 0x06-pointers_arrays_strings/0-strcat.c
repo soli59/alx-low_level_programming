@@ -1,30 +1,24 @@
 /**
- * _strcat - Concatenates two strings.
- * @dest: Pointer to the destination string.
- * @src: Pointer to the source string to be concatenated.
+ * _strcat - concatenate two strings
+ * @dest: destination string buffer
+ * @src: source string buffer
  *
- * Return: Pointer to the resulting string dest.
+ * Description: The _strcat() function appends the @src string to the @dest
+ * string, overwriting the terminating null byte ('\\0') at the end of dest,
+ * and then adds a terminating null byte.
+ *
+ * Return: a pointer to the resulting string dest
  */
 char *_strcat(char *dest, char *src)
 {
-	int dest_len = 0;
-	int src_len = 0;
-	int i;
+	int len, i;
 
-	/* Calculate the length of dest */
-	while (dest[dest_len] != '\0')
-		dest_len++;
+	for (len = 0; dest[len] != '\0'; len++)
+		;
 
-	/* Calculate the length of src */
-	while (src[src_len] != '\0')
-		src_len++;
-
-	/* Append src to dest */
-	for (i = 0; i < src_len; i++)
-		dest[dest_len + i] = src[i];
-
-	/* Add the null-terminating byte */
-	dest[dest_len + i] = '\0';
+	for (i = 0; src[i] != '\0'; i++)
+		dest[len++] = src[i];
+	dest[len] = '\0';
 
 	return (dest);
 }

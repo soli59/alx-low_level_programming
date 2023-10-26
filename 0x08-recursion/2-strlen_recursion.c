@@ -1,18 +1,16 @@
-#include "main.h"
-
 /**
- * _strlen_recursion - Returns the length of a string recursively.
- * @s: The string to find the length of.
+ * _strlen_recursion - get the length of a string
+ * @s: string
  *
- * Return: The length of the string.
-*/
+ * Return: length of string
+ */
 int _strlen_recursion(char *s)
 {
-int ntr = 0;
-if (*s > '\0')
-{
-	ntr += _strlen_recursion(s + 1) + 1;
-}
+	int i = 0;
 
-return (ntr);
+	if (*s == '\0')
+		return (i);
+	i++;
+	i += _strlen_recursion(++s);
+	return (i);
 }

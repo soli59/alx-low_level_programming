@@ -1,16 +1,14 @@
 /**
- * factorial - Returns the factorial of a number.
- * @n: The number to calculate the factorial of.
+ * factorial - returns the factorial of a given number.
+ * @n: number
  *
- * Return: The factorial of n. If n is less than 0, returns -1.
+ * Return: factorial of number @n
  */
 int factorial(int n)
 {
-	if (n < 0)
+	if (n < 0) /* handle negative integers */
 		return (-1);
-
 	if (n == 0 || n == 1)
 		return (1);
-
 	return (n * factorial(n - 1));
 }

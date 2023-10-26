@@ -1,47 +1,36 @@
+/* set of possible string delimeters */
+#define TAB '\t'
+#define BLANK ' '
+#define NEWLINE '\n'
+#define DOT '.'
+#define COMMA ','
+#define SEMI_COLON ';'
+#define QUOTE '"'
+#define ISDELIM(c) ( \
+		c == TAB || c == BLANK || c == NEWLINE || c == COMMA  || \
+		c == DOT || c == SEMI_COLON || c == '?' || c == QUOTE ||  \
+		c == '(' || c == ')' || c == '{' || c == '}' || c == '!' \
+		)
+#define INTERVAL 32
+#define to_upper(c) ((c >= 'a' && c <= 'z') ? c - INTERVAL : c)
+#define to_lower(c) ((c >= 'A' && c <= 'Z') ? c + INTERVAL : c)
+
 /**
- * cap_string - Capitalizes all words of a string.
- * @str: The input string.
+ * cap_string - capitalize the first letter of each word in a string
+ * @s: string
  *
- * Return: A pointer to the modified string.
+ * Return: a pointer to the string
  */
-char *cap_string(char *str)
+char *cap_string(char *s)
 {
-	char separators[] = " \t\n,;.!?\"(){}";
-	int i, j;
+	int i;
 
-	/* Capitalize the first character of the string */
-	if (str[0] >= 'a' && str[0] <= 'z')
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		str[0] = str[0] - 32;
+		if (i == 0) /* capitalize the first letter in the s */
+			s[i] = to_upper(s[i]);
+		else if (ISDELIM(s[i - 1])) /* change to upper case after each delimeter */
+			s[i] = to_upper(s[i]);
 	}
-
-	for (i = 1; str[i] != '\0'; i++)
-	{
-		/* Check if the current character is a separator */
-		int is_separator = 0;
-
-		for (j = 0; separators[j] != '\0'; j++)
-		{
-			if (str[i] == separators[j])
-			{
-				is_separator = 1;
-				break;
-			}
-		}
-		if (!is_separator && (str[i - 1] == ' ' || str[i - 1] == '\t' ||
-					str[i - 1] == '\n' || str[i - 1] == ',' ||
-					str[i - 1] == ';' || str[i - 1] == '.' ||
-					str[i - 1] == '!' || str[i - 1] == '?' ||
-					str[i - 1] == '"' || str[i - 1] == '(' ||
-					str[i - 1] == ')' || str[i - 1] == '{' ||
-					str[i - 1] == '}'))
-		{
-			if (str[i] >= 'a' && str[i] <= 'z')
-			{
-				str[i] = str[i] - 32;
-			}
-		}
-	}
-
-	return (str);
+	return (s);
 }

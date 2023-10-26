@@ -1,18 +1,19 @@
+#include "dog.h"
 #include <stdio.h>
-#include "dog.h" /* Include the header file with the struct definition */
 
 /**
- * print_dog - Print the elements of a struct dog
- * @d: Pointer to the struct dog to be printed
- *
- * Description: func prints the elements of a struct dog in a specific format.
+ * print_dog - print information of dog entity
+ * @d: pointer to an instance of the dog structure
  */
 void print_dog(struct dog *d)
 {
 	if (d == NULL)
-		return; /* Don't proceed if d is NULL */
+		return; /* instance not initialized, nothing to print */
 
-	printf("Name: %s\n", (d->name != NULL) ? d->name : "(nil)");
-	printf("Age: %.6f\n", d->age);
-	printf("Owner: %s\n", (d->owner != NULL) ? d->owner : "(nil)");
+	printf("Name: %s\n", ((d->name) ? d->name : "(nil)"));
+	if (d->age >= 0.0)
+		printf("Age: %f\n", d->age);
+	else
+		puts("Age: (nil)");
+	printf("Owner: %s\n", ((d->owner) ? d->owner : "(nil)"));
 }

@@ -1,27 +1,24 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * main - prints the first 10 digits in ascending order
  *
- * Description: Prints all possible combinations of single-digit numbers.
- *
- * Return: 0 (Success)
-*/
+ * Return: 0
+ */
 int main(void)
 {
-	int n = 0;
+	int i;
 
-	while (n <= 9)
+	for (i = 0; i < 10; i++)
 	{
-		putchar(n + 48);
-		if (n != 9)
+		putchar(i + '0');
+		if (i < (10 - 1)) /* add comma and space until the last digit is seen */
 		{
 			putchar(',');
 			putchar(' ');
 		}
-		n++;
 	}
-
 	putchar('\n');
+
 	return (0);
 }

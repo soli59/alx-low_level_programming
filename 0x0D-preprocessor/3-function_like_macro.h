@@ -1,6 +1,7 @@
-#ifndef ABS_MACRO_H
-#define ABS_MACRO_H
+#ifndef ABS_H
+#define ABS_H
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
+/* gets the absolute value of a number */
+#define ABS(x) (((x) < 0) ? -(x) : (x))
 
-#endif /* ABS_MACRO_H */
+#endif

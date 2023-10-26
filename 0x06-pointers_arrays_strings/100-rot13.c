@@ -1,28 +1,25 @@
-#include "main.h"
-
 /**
- * rot13 - Encodes a string using ROT13 cipher.
- * @str: The string to encode.
+ * rot13 - perform ROT13 encryption
+ * @s: string to encrypt
  *
- * Return: A pointer to the encoded string.
+ * Return: pointer to the encrypted string @s
  */
-char *rot13(char *str)
+char *rot13(char *s)
 {
-	char *input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char *output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	int i, j;
+	const char *map1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const char *map2 = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		for (j = 0; input[j] != '\0'; j++)
+		for (j = 0; map1[j] != '\0'; j++)
 		{
-			if (str[i] == input[j])
+			if (s[i] == map1[j])
 			{
-				str[i] = output[j];
+				s[i] = map2[j];
 				break;
 			}
 		}
 	}
-
-	return (str);
+	return (s);
 }

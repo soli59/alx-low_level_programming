@@ -1,9 +1,7 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef __MAIN_H__
+#define __MAIN_H__
 
-#include <stdio.h>
-
-int _putchar(char c);
+int _putchar(int c);
 void reset_to_98(int *n);
 void swap_int(int *a, int *b);
 int _strlen(char *s);
@@ -14,6 +12,6 @@ void puts2(char *str);
 void puts_half(char *str);
 void print_array(int *a, int n);
 char *_strcpy(char *dest, char *src);
-int atoi(char *s);
+int _atoi(char *s);
 
-#endif /* MAIN_H */
+#endif

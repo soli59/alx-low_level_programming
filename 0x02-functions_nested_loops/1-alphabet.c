@@ -1,19 +1,13 @@
-#include"main.h"
+#include "main.h"
 
 /**
- * print_alphabet - uses  _putchar function to print the alphaber a - z.
- *
- * Description:
- * This function prints the lowercase English alphabet from 'a' to 'z'
- * using the _putchar function
- *
-*/
-
+ * print_alphabet - prints alphabets in lower case
+ */
 void print_alphabet(void)
 {
-	int ch;
+	char c;
 
-	for (ch = 'a'; ch <= 'z'; ch++)
-		_putchar(ch);
+	for (c = 'a'; c <= 'z'; c++)
+		_putchar(c);
 	_putchar('\n');
 }

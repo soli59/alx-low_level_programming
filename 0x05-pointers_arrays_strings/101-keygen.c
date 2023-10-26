@@ -2,34 +2,36 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define PASSWORD_LENGTH 12
+/**
+ * keygen - generates a random password
+ */
+void keygen(void)
+{
+	int next_char;
+	/* value compared in 101-crackme Assembly code -> 0xad4 */
+	int upper_bound = 2772;
+
+	srand(time(NULL));
+
+	while (upper_bound > 122)
+	{
+		/* Generate a random number between 1 and 125 */
+		next_char = (rand() % 125) + 1;
+		putchar(next_char); /* print the associated ASCII character */
+		upper_bound -= next_char;
+	}
+	putchar(upper_bound);
+	putchar('\n');
+}
 
 /**
- * main - Generates a random password.
+ * main - driver code
  *
- * Return: Always 0.
+ * Return: 0
  */
 int main(void)
 {
-	const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	char password[PASSWORD_LENGTH + 1]; /* +1 for null-terminator */
-	int i;
-
-	/* Seed the random number generator with the current time */
-	srand(time(NULL));
-
-	/* Generate a random password */
-	for (i = 0; i < PASSWORD_LENGTH; i++)
-
-	{
-	int index = rand() % (sizeof(charset) - 1);
-
-	password[i] = charset[index];
-
-	}
-	password[PASSWORD_LENGTH] = '\0';
-
-	printf("Random Password: %s\n", password);
-
+	keygen();
 	return (0);
 }
+

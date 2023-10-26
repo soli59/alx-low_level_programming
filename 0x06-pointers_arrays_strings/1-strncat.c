@@ -1,30 +1,24 @@
 /**
- * _strncat - Concatenates two strings
- * @dest: The destination string
- * @src: The source string
- * @n: The maximum number of bytes from src to append
+ * _strncat - concatenate two strings
+ * @dest: destination string buffer
+ * @src: source string buffer
+ * @n: number of bytes to write
  *
- * Return: A pointer to the resulting string dest
+ * Description: Appends @n bytes from @src to @dest.The @dest string needs
+ * to be large enough to contain the resultant string.
+ *
+ * Return: pointer to the resulting string @dest
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int dest_len = 0;
-	int i;
+	int len, i;
 
-	/* Find the length of dest */
-	while (dest[dest_len] != '\0')
-	{
-		dest_len++;
-	}
+	for (len = 0; dest[len] != '\0'; len++)
+		;
 
-	/* Append at most n bytes from src to dest */
 	for (i = 0; i < n && src[i] != '\0'; i++)
-	{
-		dest[dest_len + i] = src[i];
-	}
-
-	/* Null-terminate the resulting string */
-	dest[dest_len + i] = '\0';
+		dest[len++] = src[i];
+	dest[len] = '\0';
 
 	return (dest);
 }

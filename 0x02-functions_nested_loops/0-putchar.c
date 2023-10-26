@@ -1,19 +1,17 @@
 #include "main.h"
 
 /**
- *main - Entry point of the program
- *
- *Description: prints _putchar using putchar prototype
- *
- *Return: Always 0 (Success)
-*/
+ * main - driver code to test _putchar() function
+ * Return: 0
+ */
 int main(void)
 {
-	char str[] = "_putchar ";
-	int ch;
+	char *str = "_putchar";
 
-	for (ch = 0; ch < 8; ch++)
-		_putchar(str[ch]);
+	while (*str != '\0')
+		_putchar(*str++);
 	_putchar('\n');
+
 	return (0);
 }
+

@@ -2,27 +2,27 @@
 #include <stdlib.h>
 
 /**
- * main - Entry point
- * @argc: The number of command-line arguments
- * @argv: An array of pointers to the command-line arguments
+ * main - Prints the product of two integers
+ * @argc: CLI args counter
+ * @argv: Operands. Expects two operands
  *
- * Return: 0 on success, 1 on error
+ * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int num1, num2, result;
+	int num1, num2;
 
 	if (argc != 3)
 	{
-		printf("Error\n");
-		return (1);
+		puts("Error");
+		return (1); /* more or less than two arguments received */
 	}
 
+	/* get the integral values of the two operands */
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[2]);
-	result = num1 * num2;
 
-	printf("%d\n", result);
+	printf("%d\n", num1 * num2);
 
 	return (0);
 }

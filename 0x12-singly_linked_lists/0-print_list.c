@@ -9,26 +9,22 @@
 size_t print_list(const list_t *head)
 {
 	size_t node_count = 0;
-	list_t *tmp_head = (list_t *) head;
 
 	/* handle cases where the list is empty */
-	if (tmp_head == NULL)
+	if (head == NULL)
 	{
 		return (0);
 	}
 
-	while (tmp_head != NULL)
+	while (head != NULL)
 	{
 		/* handle NULL strings */
-		if (tmp_head->str == NULL)
-		{
-			tmp_head->str = "(nil)";
-			tmp_head->len = 0;
-		}
-
-		printf("[%u] %s\n", tmp_head->len, tmp_head->str);
+		if (head->str == NULL)
+			printf("[0] (nil)\n");
+		else
+			printf("[%u] %s\n", head->len, head->str);
 		node_count++;
-		tmp_head = tmp_head->next;
+		head = head->next;
 	}
 
 	return (node_count);

@@ -1,14 +1,13 @@
 #include <stdio.h>
+
 /**
- * main - Entry point of the program
+ * main - prints the name of the file it was compiled from
  *
- * This function prints the name of the source file and a newline.
- *
- * Return: Always 0 (Success)
-*/
+ * Return: 0
+ */
 int main(void)
 {
-	printf(__FILE__ "\n");
+	puts(__FILE__);
 
 	return (0);
 }

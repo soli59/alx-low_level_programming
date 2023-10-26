@@ -1,24 +1,25 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * jack_bauer - Prints every minute of the day of Jack Bauer.
+ * jack_bauer - Jack bauer's longest day.
+ *
+ * Description: Prints every minute of the day of Jack Bauer,
+ * starting from 00:00 to 23:59.
  */
 void jack_bauer(void)
-
 {
-	int hour, minute;
+	char hh, mm;
 
-	for (hour = 0; hour < 24; hour++)
+	for (hh = 0; hh < 24; hh++)
 	{
-		for (minute = 0; minute < 60; minute++)
+		for (mm = 0; mm < 60; mm++)
 		{
-		_putchar((hour / 10) + '0');
-		_putchar((hour % 10) + '0');
-		_putchar(':');
-		_putchar((minute / 10) + '0');
-		_putchar((minute % 10) + '0');
-		_putchar('\n');
+			_putchar((hh / 10) + '0');
+			_putchar((hh % 10) + '0');
+			_putchar(':');
+			_putchar((mm / 10) + '0');
+			_putchar((mm % 10) + '0');
+			_putchar('\n');
 		}
 	}
 }

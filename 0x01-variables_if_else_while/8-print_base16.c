@@ -1,26 +1,18 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * main - printing the hex range
  *
- * Description: Prints all numbers of base 16 in lowercase.
- *
- * Return: 0 (Success)
-*/
+ * Return: 0
+ */
 int main(void)
 {
-	char digit;
+	char c;
 
-	for (digit = '0'; digit <= '9'; digit++)
-	{
-		putchar(digit);
-	}
-
-	for (digit = 'a'; digit <= 'f'; digit++)
-	{
-		putchar(digit);
-	}
-
+	for (c = '0'; c <= '9'; c++)
+		putchar(c);
+	for (c = 'a'; c <= 'f'; c++)
+		putchar(c);
 	putchar('\n');
 
 	return (0);

@@ -1,46 +1,31 @@
 /**
- * _sqrt_helper - Helper function to calculate the square root recursively.
- * @n: The number to calculate the square root of.
- * @guess: The current guess for the square root.
+ * get_sqrt - gets the square of a number - a helper function
+ * @target: number
+ * @current: accumulator
  *
- * Return: The natural square root of n.
- * If n does not have a natural square root, returns -1.
+ * Return: square root on @target else -1 if @target is not a natural
+ * square root
  */
-int _sqrt_helper(int n, int guess);
-
-/**
- * _sqrt_recursion - Returns the natural square root of a number.
- * @n: The number to calculate the square root of.
- *
- * Return: The natural square root of n.
- * If n does not have a natural square root, returns -1.
- */
-int _sqrt_recursion(int n)
+int get_sqrt(int target, int current)
 {
-	if (n < 0)
+	if ((current * current) > target) /* not a natural square root */
 		return (-1);
-
-	if (n == 0 || n == 1)
-		return (n);
-
-	return (_sqrt_helper(n, 1));
+	if ((current * current) == target)
+		return (current);
+	return (get_sqrt(target, current + 1));
 }
 
 /**
- * _sqrt_helper - Helper function to calculate the square root recursively.
- * @n: The number to calculate the square root of.
- * @guess: The current guess for the square root.
+ * _sqrt_recursion - returns the natural square root of a number
+ * @target: number
  *
- * Return: The natural square root of n.
- * If n does not have a natural square root, returns -1.
+ * Return: natural square root of a number
  */
-int _sqrt_helper(int n, int guess)
+int _sqrt_recursion(int target)
 {
-	if (guess * guess == n)
-		return (guess);
-
-	if (guess * guess > n)
+	if (target < 0)
 		return (-1);
-
-	return (_sqrt_helper(n, guess + 1));
+	if (target == 0 || target == 1)
+		return (1);
+	return (get_sqrt(target, 0));
 }

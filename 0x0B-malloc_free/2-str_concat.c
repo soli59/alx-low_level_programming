@@ -1,38 +1,49 @@
-#include <stdlib.h>
+#include "main.h"
+#include <string.h>
+#define check_null(s) ((s == 0) ? (s = "") : s) /* handle null strings */
 
 /**
  * str_concat - Concatenates two strings.
- * @s1: The first string.
- * @s2: The second string.
+ * @s1: String 1
+ * @s2: String 2
  *
- * Return: A pointer to the concatenated string, or NULL on failure.
+ * Return: A pointer to a newly allocated space in memory which
+ * contains the contents of @s1 and @s2, NULL if it fails.
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *concatenated;
-	unsigned int len1 = 0, len2 = 0, i, j;
+	char *new_string;
+	unsigned int i, j, len;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+	check_null(s1);
+	check_null(s2);
 
-	while (s1[len1])
-		len1++;
-	while (s2[len2])
-		len2++;
+	len = strlen(s1) + strlen(s2); /* get the length of both strings */
 
-	concatenated = malloc((len1 + len2 + 1) * sizeof(char));
+	new_string = (char *) malloc(len + 1);
 
-	if (concatenated == NULL)
+	if (new_string == NULL)
 		return (NULL);
 
-	for (i = 0; i < len1; i++)
-		concatenated[i] = s1[i];
-	for (j = 0; j < len2; j++)
-		concatenated[i + j] = s2[j];
+	/* copy the contents of the first string - s1*/
+	i = 0;
+	while (*(s1 + i))
+	{
+		*(new_string + i) = *(s1 + i);
+		i++;
+	}
 
-	concatenated[i + j] = '\0';
+	j = i; /* save the current position in the new_string */
 
-	return (concatenated);
+	/* copy the contents of the second string - s2 */
+	i = 0;
+	while (*(s2 + i))
+	{
+		*(new_string + j) = *(s2 + i);
+		i++;
+		j++;
+	}
+	*(new_string + j) = '\0';
+
+	return (new_string);
 }

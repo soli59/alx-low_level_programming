@@ -1,29 +1,30 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
- * print_rev - Prints a string in reverse followed by a new line.
- * @s: Pointer to the input string.
+ * get_len - helper function to get the length of a string
+ * @s: string
  *
- * Description: This function prints the characters of the string pointed to by
- * @s in reverse order to the standard output (stdout) and appends a newline
- * character '\n'.
+ * Return: length of string
+ */
+int get_len(char *s)
+{
+	int i = 0;
+
+	for (; *s; s++, i++)
+		;
+	return (i);
+}
+
+/**
+ * print_rev - prints a string in reverse
+ * @s: string
  */
 void print_rev(char *s)
 {
-	char *end = s;
+	int i, len;
 
-	while (*end != '\0')
-	{
-		end++;
-	}
-
-	end--; /* Move back one position to the last character */
-
-	while (end >= s)
-	{
-		write(1, end, 1); /* Write one character at a time to stdout in reverse */
-		end--;
-	}
-
-	write(1, "\n", 1); /* Write a newline character to stdout */
+	len = get_len(s) - 1;
+	for (i = 0; s[i] != '\0'; i++)
+		_putchar(s[len - i]);
+	_putchar('\n');
 }

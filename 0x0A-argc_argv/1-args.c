@@ -1,14 +1,15 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- * @argc: The number of command-line arguments
- * @argv: An array of pointers to the command-line arguments
+ * main - Prints the number of CLI arguments passed at runtime
+ * @argc: CLI args counter
+ * @argv: Command line arguments
  *
- * Return: 0 on success
+ * Return: 0
  */
-int main(int argc, char *argv[]__attribute__((unused)))
+int main(int argc, __attribute__((unused)) char *argv[])
 {
 	printf("%d\n", argc - 1);
+
 	return (0);
 }

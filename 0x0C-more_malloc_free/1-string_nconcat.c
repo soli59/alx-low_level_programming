@@ -1,52 +1,63 @@
-#include <stdlib.h>
+#include "main.h"
+
+/* helper functions */
+#define empty_if_null(s) ((s == NULL) ? (s = "") : s)
+unsigned int _strlen(const char *s);
 
 /**
- * string_nconcat - Concatenate two strings with a limit on the second string
- * @s1: The first string
- * @s2: The second string
- * @n: The maximum number of characters to concatenate from s2
+ * string_nconcat - concatenate two strings
+ * @s1: string 1
+ * @s2: string 2
+ * @n: number of characters to write from string @s2 to
+ * the new string
  *
- * Return: A pointer to the newly allocated concatenated string
- *         If malloc fails or NULL is passed, return NULL
+ * Note: Memory for the new string is dynamically allocated,
+ * and should be freed.
+ *
+ * Return: A pointer to the concatenated string
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int len1 = 0, len2 = 0;
-	unsigned int i, j;
-	char *concat;
+	char *new_str;
+	unsigned int s1_len, s2_len, new_str_len, i, j;
 
-	/* Check for NULL strings and treat them as empty */
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+	/* handle as an empty string if NULL */
+	empty_if_null(s1);
+	empty_if_null(s2);
 
-	/* Calculate the lengths of both strings */
-	while (s1[len1])
-		len1++;
-	while (s2[len2])
-		len2++;
+	s1_len = _strlen(s1);
+	s2_len = _strlen(s2);
 
-	/* Adjust n to use the entire s2 if n is greater or equal to its length */
-	if (n >= len2)
-		n = len2;
+	if (n >= s2_len)
+		n = s2_len; /* get the exact number of characters to write from s2 */
 
-	/* Allocate memory for the concatenated string */
-	concat = malloc((len1 + n + 1) * sizeof(char));
+	new_str_len = s1_len + n;
+	new_str = malloc(sizeof(char) * (new_str_len + 1));
 
-	if (concat == NULL)
-		return (NULL);
+	if (new_str == NULL)
+		return (NULL); /* handle memory allocation failure */
 
-	/* Copy s1 into the concatenated string */
-	for (i = 0; i < len1; i++)
-		concat[i] = s1[i];
+	/* Concatenate s1 and s2 to new_str */
+	for (i = 0; i < s1_len; i++)
+		new_str[i] = s1[i];
+	for (j = 0; j < n; j++)
+		new_str[i + j] = s2[j];
+	new_str[i + j] = '\0';
 
-	/* Copy the first n characters from s2 into the concatenated string */
-	for (j = 0; j < n; j++, i++)
-		concat[i] = s2[j];
+	return (new_str);
+}
 
-	/* Add the null terminator */
-	concat[i] = '\0';
+/**
+ * _strlen - get the length of a string
+ * @s: string
+ *
+ * Return: the length of string @s
+ */
+unsigned int _strlen(const char *s)
+{
+	unsigned int len;
 
-	return (concat);
+	for (len = 0; s[len] != '\0'; len++)
+		;
+	return (len);
 }

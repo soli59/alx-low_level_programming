@@ -1,22 +1,17 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * main - printing first ten digits in base 10
  *
- * Description: Prints single-digit numbers in base 10 from 0 to 9.
- *
- * Return: 0 (Success)
-*/
+ * Return: 0
+ */
 int main(void)
 {
-	int digit = 0;
+	int i;
 
-	while (digit <= 9)
-	{
-		putchar(digit + '0');
-		digit++;
-	}
+	for (i = 0; i < 10; i++)
+		printf("%d", i);
+	printf("\n");
 
-	putchar('\n');
 	return (0);
 }

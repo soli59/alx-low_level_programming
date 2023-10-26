@@ -1,37 +1,42 @@
-#include <stdlib.h>
+#include "main.h"
+#include <string.h>
 
 /**
- * alloc_grid - Allocates a 2-dimensional array of integers.
- * @width: The width (number of columns) of the grid.
- * @height: The height (number of rows) of the grid.
+ * alloc_grid - Returns a pointer to a 2D grid of integers
+ * initialized with zero
+ * @width: Width of grid
+ * @height: Height of grid
  *
- * Return: A pointer to the allocated grid, or NULL on failure.
+ * Return: A pointer to the 2D grid of integers, NULL if it fails
  */
 int **alloc_grid(int width, int height)
 {
-	int **grid;
-	int i, j;
+	int **grid, col;
 
-	if (width <= 0 || height <= 0)
+	if (height <= 0 || width <= 0)
 		return (NULL);
 
-	grid = malloc(height * sizeof(int *));
+	grid = (int **) malloc(height * sizeof(int *));
 	if (grid == NULL)
 		return (NULL);
 
-	for (i = 0; i < height; i++)
+	for (col = 0; col < height; col++)
 	{
-		grid[i] = malloc(width * sizeof(int));
-		if (grid[i] == NULL)
-		{
-			for (j = 0; j < i; j++)
-				free(grid[j]);
-			free(grid);
-			return (NULL);
-		}
+		/* allocate memory for rows */
+		grid[col] = (int *) malloc(width * sizeof(int));
 
-		for (j = 0; j < width; j++)
-			grid[i][j] = 0;
+		if (grid[col] == NULL)
+		{
+			while (col >= 0)
+			{
+				free(grid[col]);
+				col--;
+			}
+			free(grid);
+			return (NULL); /* handle memory allocation failure and dangling pointer */
+		}
+		/* initialize the rows of each grid column with zeros */
+		memset(grid[col], 0, width * sizeof(int));
 	}
 
 	return (grid);
